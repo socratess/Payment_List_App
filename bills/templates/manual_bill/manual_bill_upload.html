@@ -1,0 +1,23 @@
+  
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Upload Your Manual Bill</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+        
+<form id="form_upload" action="{% url 'bills:manualbill_all'%}" method="post" enctype="multipart/form-data">
+{%csrf_token%}
+<div class="modal-body">
+
+<input type="file" name="myfile" class="form-control" accept=".xlsx">
+</div>
+      <div class="modal-footer">
+        <button id="button_create" type="button" class="btn btn-primary" onclick="upload_manual_bill_bank();">Upload</button>
+        <button type="button" class="btn btn-danger" onclick="close_modal_upload();">Close</button>
+       </div>
+    </form>
+      
+    </div>
+  </div>

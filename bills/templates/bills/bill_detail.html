@@ -1,0 +1,45 @@
+{% load crispy_forms_tags %}
+
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Detail of {{bill.title}}</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<ul>
+<li>
+ <p><strong>Description: </strong>{{bill.description}}</p>
+ </li>
+ <li>
+<p><strong>Price: </strong>{{bill.price}}</p>
+</li>
+<li>
+<p><strong>User: </strong>{{bill.user}}</p>
+</li>
+<li>
+<p><strong>Created: </strong>{{bill.created}}</p>
+</li>
+
+<li>
+{%if bill.datecompleted%}
+<p><strong>Completed: </strong>{{bill.datecompleted}}</p>
+{%else%}
+<p><strong>Completed: </strong>It needed to add pay</p>
+{%endif%}
+</li>
+<li>
+{% if banks %}
+    <p><strong>Bank: </strong>{{banks.name}}</p>
+{%else%} 
+   <p><strong>Bank: </strong>It needed to Add Bank</p>
+{%endif%}
+
+</li>
+</ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+</div>

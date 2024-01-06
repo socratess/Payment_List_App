@@ -1,0 +1,20 @@
+{%extends 'base_menu.html'%}
+{%block content%}
+<div class="container">
+<h1>Delete bill</h1>
+
+<p>Are you sure you want to delete this bill?</p>
+<ul>
+<li>
+<p>Name: {{bill.title}}</p>
+<p>Price: {{bill.price}}</p>
+</li>
+</ul>
+
+<form action="" method="Post">
+    {%csrf_token%}
+<input type="submit" value="Yes, delete.">
+<input type="submit" onclick="window.location='{% url 'bills:all'%}'; return false;"   value="Cancel">
+</form>
+</div>
+{%endblock%}

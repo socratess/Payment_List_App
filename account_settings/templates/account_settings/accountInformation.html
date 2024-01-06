@@ -1,0 +1,30 @@
+{%extends 'base_menu.html'%}
+
+
+{%block content%}
+<h1>User Account Information of {{ userInformations.username}}</h1>
+
+<ul> 
+<li>  
+   <p>First Name: {{ userInformations.first_name}}</p>
+   <p>Last Name: {{ userInformations.last_name}}</p>
+   <p>Email:  {{ userInformations.email}}</p>
+   <p>Last Login: {{ userInformations.last_login}}</p>
+   <p>Date of Joined: {{ userInformations.date_joined}}</p>
+   <br/>
+    <p>
+      {%if userInformations.is_active%}
+          <button><a href="{% url 'account_settings:UserUpdate_all' userInformations.id %}">Update Your Information</a></button> 
+          <hr/>
+          <br/>
+          <button><a href="{% url 'account_settings:UserInactive_all' userInformations.id %}">Inactive Account</a></button> 
+         <hr/>
+          <br/>
+         <button><a href="{% url 'account_settings:UserDelete_all' userInformations.id %}">Delete Your Account</a></button>
+ 
+          {%endif%}   
+    </p>
+</li>
+</ul>
+
+{%endblock%}

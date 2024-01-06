@@ -1,0 +1,26 @@
+{% load crispy_forms_tags %}
+
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Pay Bill</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="form_payment" action="{% url 'bills:bill_pay' object.pk %}" method="post">
+{%csrf_token%}
+
+<div class="modal-body">
+
+<table>
+     <h2>Payment</h2>
+    {{form|crispy}} 
+</table>
+
+</div>
+<div class="modal-footer">
+<button id="button_create" type="button" class="btn btn-primary" onclick="pay_bill();">Add Pay</button>
+<button type="button" class="btn btn-danger" onclick="close_modal_payment();">Cancel</button>
+</div>
+</form>   
+</div>
+  </div>

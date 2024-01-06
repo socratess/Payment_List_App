@@ -1,0 +1,11 @@
+{%extends 'base_menu.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h1 class="text-center"> Oooops, Wrong Path!</h1>
+<br>
+<p>You used a wrong path in your page, try a right path.</p>
+<p class="text-center"><a href="{%url 'home:home_all'%}">Go Home</a></p>
+
+{% endblock %}

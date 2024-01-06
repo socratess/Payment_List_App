@@ -1,0 +1,12 @@
+{%extends 'base_menu.html' %}
+
+{%block content%}
+
+<div class="container">
+<form action="" method="post" enctype="multipart/form-data">
+{%csrf_token%}
+<input type="file" name="myfile" class="form-control">
+<button type="submit" class="btn btn-success">Upload Your Manual Bill</button>
+</form>
+</div>
+{%endblock%}  

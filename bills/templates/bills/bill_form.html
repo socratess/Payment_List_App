@@ -1,0 +1,74 @@
+<!--{%extends 'base_menu.html'%}-->
+{% load crispy_forms_tags %}
+<!--{%block content%}-->
+<!--<div class="container">
+<form action="" method="post">
+{%csrf_token%}
+{% if form%}
+<table>
+     <h2>Update</h2>
+    {{form|crispy}} 
+</table>
+
+{%endif%}
+{% if formBank%}
+<table>
+     <h2>Information about bills</h2>
+    {{formBill|crispy}}
+    
+</table>
+{%endif%}
+{% if formBank%}
+<table>
+      <h2>Information about banks</h2>
+    {{formBank|crispy}}
+</table>
+{%endif%}
+
+
+
+<input type="submit" value="Submit">
+<input type="submit" onclick="window.location='{% url 'bills:all'%}'; return false;"   value="Cancel">
+</form>
+</div>
+-->
+
+
+
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create Bills</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="form_create" action="{% url 'bills:bill_create'%}" method="post">
+{%csrf_token%}
+
+<div class="modal-body">
+
+<div id="errors">
+
+</div>
+
+{% if formBank%}
+<table>
+     <h2>Information about bills</h2>
+    {{formBill|crispy}}
+    
+</table>
+{%endif%}
+{% if formBank%}
+<table>
+      <h2>Information about banks</h2>
+    {{formBank|crispy}}
+</table>
+{%endif%}
+</div>
+<div class="modal-footer">
+<button id="button_create" type="button" class="btn btn-primary" onclick="create_bill_bank();">Create</button>
+<button type="button" class="btn btn-danger" onclick="close_modal_create();">Cancel</button>
+</div>
+</form>   
+</div>
+  </div>
+<!--{%endblock%}-->

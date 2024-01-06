@@ -1,0 +1,20 @@
+{%extends 'base_menu.html'%}
+{%block content%}
+<div class="container">
+<h1>Delete Account</h1>
+
+<p>Are you sure you want to delete your account?</p>
+<ul>
+<li>
+<p>Name: {{user.username}}</p>
+<p>Email: {{user.email}}</p>
+</li>
+</ul>
+
+<form action="" method="Post">
+    {%csrf_token%}
+<input type="submit" value="Yes, delete.">
+<input type="submit" onclick="window.location='{% url 'account_settings:UserInformation_all'%}'; return false;"   value="Cancel">
+</form>
+</div>
+{%endblock%}

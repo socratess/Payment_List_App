@@ -1,0 +1,29 @@
+{% load crispy_forms_tags %}
+
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Bank {{object}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="form_update_bank" action="{% url 'bills:banks_update' object.pk %}" method="post">
+{%csrf_token%}
+
+<div class="modal-body">
+
+<div id="errorsUpdate_Bank">
+
+</div>
+<table>
+     <h2>Update</h2>
+    {{form|crispy}} 
+</table>
+
+</div>
+<div class="modal-footer">
+<button id="button_update_bank" type="button" class="btn btn-primary" onclick="update_bank();">Update</button>
+<button type="button" class="btn btn-danger" onclick="close_modal_update_bank();">Cancel</button>
+</div>
+</form>   
+</div>
+  </div>
