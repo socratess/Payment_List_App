@@ -176,9 +176,6 @@ env = environ.Env()
 environ.Env.read_env()
 
 
-
-
-
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
