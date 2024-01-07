@@ -9,6 +9,6 @@ __pycache__/
 *.env
 
 migrations/
-env/
-static/
+#env/
+#static/
 
