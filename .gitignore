@@ -1,14 +1,14 @@
 # .gitignore
-*.pyc
-*.pyo
-__pycache__/
+#*.pyc
+#*.pyo
+#__pycache__/
 
 *.xlsx
-*.sqlite3
-*.log
+.sqlite3
+#*.log
 #*.env
 
-migrations/
-#env/
+#migrations/
+env/
 #static/
 
