@@ -36,16 +36,12 @@ APP_NAME = 'Payment-Bill'
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
-
-#'django-insecure-#^l$!8o9)t8%b7wec4zledf4vu#-&!5n7gcg1472zqu=f%yyqh'
+SECRET_KEY = 'django-insecure-#^l$!8o9)t8%b7wec4zledf4vu#-&!5n7gcg1472zqu=f%yyqh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG','False').lower() ==  'true'
+DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ")
-
-#['*']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -82,6 +78,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
     'django_auto_logout.middleware.auto_logout',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'payment_list.urls'
@@ -126,9 +123,8 @@ DATABASES = {
     }
 }
 
-database_url = os.environ.get('DATABASE_URL')
-DATABASES['default']= dj_database_url.parse(database_url)
-#"postgres://postgresql_payment_bill_user:KTtjwPUH7SxS6tx2wIIVDxfU25OS05Jx@dpg-cmd3h0021fec73cvv3f0-a.oregon-postgres.render.com/postgresql_payment_bill"
+DATABASES['default']= dj_database_url.parse("postgres://postgresql_payment_bill_user:KTtjwPUH7SxS6tx2wIIVDxfU25OS05Jx@dpg-cmd3h0021fec73cvv3f0-a.oregon-postgres.render.com/postgresql_payment_bill")
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -166,6 +162,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'productionstaticfiles'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
