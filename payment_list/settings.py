@@ -222,12 +222,24 @@ PASSWORD_HASHERS = [
 
 # Configuration the social login
 
+
+
+#os.environ.get('SECRET_KEY')
+
+
 try:
-    SOCIAL_AUTH_GITHUB_KEY = applications_social_settings.SOCIAL_AUTH_GITHUB_KEY
-    SOCIAL_AUTH_GITHUB_SECRET = applications_social_settings.SOCIAL_AUTH_GITHUB_SECRET
+    #SOCIAL_AUTH_GITHUB_KEY = applications_social_settings.SOCIAL_AUTH_GITHUB_KEY
+    #SOCIAL_AUTH_GITHUB_SECRET = applications_social_settings.SOCIAL_AUTH_GITHUB_SECRET
     
-    SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = applications_social_settings.SOCIAL_AUTH_GOOGLE_KEY
-    SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = applications_social_settings.SOCIAL_AUTH_GOOGLE_SECRET
+    #SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = applications_social_settings.SOCIAL_AUTH_GOOGLE_KEY
+    #SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = applications_social_settings.SOCIAL_AUTH_GOOGLE_SECRET
+    
+    SOCIAL_AUTH_GITHUB_KEY = os.environ.get('SOCIAL_AUTH_GITHUB_KEY')   
+    SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('SOCIAL_AUTH_GITHUB_SECRET')
+    
+    SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('SOCIAL_AUTH_GOOGLE_KEY')
+    SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('SOCIAL_AUTH_GOOGLE_SECRET')
+    
     
 except:
     print('When you want to use social login, please see the settings')
