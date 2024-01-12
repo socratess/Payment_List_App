@@ -37,14 +37,11 @@ APP_NAME = 'Payment-Bill'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
-#'django-insecure-#^l$!8o9)t8%b7wec4zledf4vu#-&!5n7gcg1472zqu=f%yyqh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG','False').lower() == 'true'
-#True
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ")
-#['*']
 
 
 # Application definition
@@ -116,7 +113,6 @@ WSGI_APPLICATION = 'payment_list.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        #'NAME': BASE_DIR / 'db.sqlite3',
         'NAME': 'Payment_List', 
         'USER': 'postgres',
         'PASSWORD': '1234',
@@ -125,9 +121,8 @@ DATABASES = {
         
     }
 }
-database_url = os.environ.get('DATABASE_URL')
 
-DATABASES['default']= dj_database_url.parse(database_url)
+DATABASES['default']= dj_database_url.parse(os.environ.get('DATABASE_URL'))
 #parse("postgres://postgresql_payment_bill_user:KTtjwPUH7SxS6tx2wIIVDxfU25OS05Jx@dpg-cmd3h0021fec73cvv3f0-a.oregon-postgres.render.com/postgresql_payment_bill")
 
 
@@ -175,14 +170,10 @@ STATIC_ROOT = BASE_DIR / 'productionstaticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 
-
-
 # Email settings details
-
 env = environ.Env()
 environ.Env.read_env()
 
@@ -191,12 +182,11 @@ EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'apikey'  # Name for all the SenGrid accounts
-EMAIL_HOST_PASSWORD = env('SENDGRID_API_KEY')
-#EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
+#EMAIL_HOST_PASSWORD = env('SENDGRID_API_KEY')
+EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
 
 # The email you'll be sending emails from
 DEFAULT_FROM_EMAIL = env('FROM_EMAIL', default='noreply@gmail.com')
-#LOGIN_REDIRECT_URL = 'success'
 
 PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.PBKDF2PasswordHasher",
@@ -208,50 +198,17 @@ PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.MD5PasswordHasher",
 ]
 
-
-
-
-
-
-#REST_FRAMEWORK = {
-#    'DEFAULT_AUTHENTICATION_CLASSES':(
-#        'rest_framework.authentication.BasicAuthentication',
-#        'rest_framework.authentication.SessionAuthentication',
-#    )
-#}
-
-# Configuration the social login
-
-
-
-#os.environ.get('SECRET_KEY')
-
-
 try:
-    #SOCIAL_AUTH_GITHUB_KEY = applications_social_settings.SOCIAL_AUTH_GITHUB_KEY
-    #SOCIAL_AUTH_GITHUB_SECRET = applications_social_settings.SOCIAL_AUTH_GITHUB_SECRET
-    
-    #SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = applications_social_settings.SOCIAL_AUTH_GOOGLE_KEY
-    #SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = applications_social_settings.SOCIAL_AUTH_GOOGLE_SECRET
-    
     SOCIAL_AUTH_GITHUB_KEY = os.environ.get('SOCIAL_AUTH_GITHUB_KEY')   
-    SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('SOCIAL_AUTH_GITHUB_SECRET')
-    
+    SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('SOCIAL_AUTH_GITHUB_SECRET')   
     SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('SOCIAL_AUTH_GOOGLE_KEY')
-    SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('SOCIAL_AUTH_GOOGLE_SECRET')
-    
-    
+    SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('SOCIAL_AUTH_GOOGLE_SECRET')    
 except:
     print('When you want to use social login, please see the settings')
 
-
-
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',
-    #'social_core.backends.twitter.TwitterOAuth',
-    #'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.google.GoogleOAuth2',
-    #'social_core.backends.google.GoogleOAuth',
     'django.contrib.auth.backends.ModelBackend',
 )
 

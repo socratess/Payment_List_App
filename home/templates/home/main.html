@@ -1,15 +1,18 @@
 {%extends 'base_menu.html'%}
 {%block content%}
 <main class="container">
-<h1>Welcome to {{ settings.APP_NAME }} 
+<center>
+    <h1>Welcome to {{ settings.APP_NAME }} 
     {%if user.is_authenticated%}
      ,{{user}}
     {%endif%}
 
 </h1>
+
 <p>
     Hello User to this amazing App!
 </p>
 <p>Where you can manage your bills and get information about your moves.</p>
+</center>
 </main>
 {%endblock%}
